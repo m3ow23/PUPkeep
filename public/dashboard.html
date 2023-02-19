@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>7576 Book Binding Services</title>
-        <link rel="stylesheet" type="text/css" href="../CSS/Profile.css">
+        <link rel="stylesheet" type="text/css" href="../CSS/dashboard.css">
     </head>
     <body>
         <!-- HEADER -->
@@ -24,23 +24,16 @@
                 </div>
                 <div class="header-right-container" id="header-right-container">
                     <div class="header-right" id="header-right">
-                        <a class="header-right-content" id ="header-right-content" href="..\PHP\Logout.php">Logout</a>
+                        <button class="header-right-content" id ="logout-button">Logout</button>
                     </div>
                 </div>
             </div>
-             <!-- FLOATING LINKS -->
-             <section class="floating-links" id="floating-links">
-                <a href="https://www.facebook.com/"><img src="../assets/HomePage/Header/FloatingLinks/Facebook.png" class="floating-links-facebook"></a>
-                <a href="https://www.instagram.com/"><img src="../assets/HomePage/Header/FloatingLinks/Instagram.png"  class="floating-links-instagram"></div></a>
-                <a href="https://www.youtube.com/"><img src="../assets/HomePage/Header/FloatingLinks/Youtube.png"  class="floating-links-youtube"></div></a>
-                <a href="https://twitter.com/"><img src="../assets/HomePage/Header/FloatingLinks/Twitter.png"  class="floating-links-twitter"></div></a>
-            </section>
         </header>
         <!-- MAIN -->
         <main id="main">
             <section class="main-introduction-container">
                 <div class="main-introduction-name-container">
-                    <p class="main-introduction-name" id="main-introduction-name">Your Orders</p>
+                    <p class="main-introduction-name" id="main-introduction-name">Dashboard</p>
                 </div>
                 <div class="main-introduction-line-container" id="main-introduction-line-container">
                     <hr class="main-introduction-line">
@@ -49,73 +42,30 @@
             <!-- ORDERS -->
             <section class="main-order-container">
                 <div >
-                    <div class="main-order-column-name-container-OrderID">
-                        <p class="main-order-column-name">OrderID</P>
+                    <div class="main-order-column-name-container-case-id">
+                        <p class="main-order-column-name">Case ID</P>
                     </div>
-                    <div class="main-order-column-name-container-Order-Date">
-                        <p class="main-order-column-name">Order Date</p>
+                    <div class="main-order-column-name-container-submitted-on">
+                        <p class="main-order-column-name">Submitted On</p>
                     </div>
-                    <div class="main-order-column-name-container-Shipping-Date">
-                        <p class="main-order-column-name">Shipping Date</p>
+                    <div class="main-order-column-name-container-submitted-by">
+                        <p class="main-order-column-name">Submitted By</p>
                     </div>
-                    <div class="main-order-column-name-container-MOPD">
-                        <p class="main-order-column-name">Mode of Payment/Delivery</p>
+                    <div class="main-order-column-name-container-location">
+                        <p class="main-order-column-name">Location</p>
                     </div>
-                    <div class="main-order-column-name-container-Status">
+                    <div class="main-order-column-name-container-urgency">
+                        <p class="main-order-column-name">Urgency</p>
+                    </div>
+                    <div class="main-order-column-name-container-status">
                         <p class="main-order-column-name">Status</p>
                     </div>
                     <div class="main-introduction-line-container" id="main-introduction-line-container">
                         <hr class="main-introduction-line">
                     </div>
                 </div>
-                <?php 
-                    if (mysqli_num_rows($result) == 0)
-                    {
-                        echo '<p class="main-order-empty">You have no order records exisiting!</p>';
-                    }
-                    else
-                    {
-                        if ($admin == 1) $href = "AdminProjects.php";
-                        else $href = "Projects.php";
-                        for ($i = 0; $i < mysqli_num_rows($result); $i++)
-                        {
-                            $row = mysqli_fetch_array($result);
-                            $orderdate[] = $row['OrderDate'];
-                            $shippingdate[] = $row['ShippingDate'];
-                            $MOPD[] = $row['ModeOfPaymentDelivery'];
-                            $status = $row['Status'];
-                                
-                            if ($admin == 1 && $status == 1) echo '<a class="main-order-tables-container-new" href="'.$href.'?orderid='.$orderid[$i].'">';
-                            else echo '<a class="main-order-tables-container" href="'.$href.'?orderid='.$orderid[$i].'">';
-                            echo '<div class="main-order-column-name-OrderID">';
-                            echo '<p class="main-order-column-name" id="main-order-column-name">'.$orderid[$i].'</p></div>';
-                            echo '<div class="main-order-column-name-Order-Date">';
-                            echo '<p class="main-order-column-name" id="main-order-column-name">'.date("m-d-20y", strtotime($orderdate[$i])).'</p></div>';
-                            echo '<div class="main-order-column-name-Shipping-Date">';
-                            if ($status == 1 || $status == 4) echo '<p class="main-order-column-name" id="main-order-column-name">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-</p></div>';
-                            else echo '<p class="main-order-column-name" id="main-order-column-name">'.date("m-d-20y", strtotime($shippingdate[$i])).'</p></div>';
-                            echo '<div class="main-order-column-name-MOPD">';
-                            echo '<p class="main-order-column-name" id="main-order-column-name">'.$MOPD[$i].'</p></div>';
-                            echo '<div class="main-order-column-name-Status">';
-                            switch ($status)
-                            {
-                                case 1:
-                                    echo '<img class="main-order-img" src="../assets/Profile/Main/new.png"></div>';
-                                    break;
-                                case 2:
-                                    echo '<img class="main-order-img" src="../assets/Profile/Main/processing.png"></div>';
-                                    break;
-                                case 3:
-                                    echo '<img class="main-order-img" src="../assets/Profile/Main/completed.png"></div>';
-                                    break;
-                                case 4:
-                                    echo '<img class="main-order-img" src="../assets/Profile/Main/cancelled.png"></div>';
-                                    break;
-                            }
-                            echo '</a>';
-                        }
-                    }
-                ?>
+                <div class="main-order-tables-container" id="main-order-tables-container"></div>
+                <script type="module" src="../JS/dashboard.js"></script>
             </section>
         </main>
     </body>

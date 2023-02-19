@@ -10,20 +10,21 @@ const firebaseConfig = {
     appId: "1:629389224588:web:8eedc3169313292f06e9a9",
     measurementId: "G-DPYLH962F0"
 };
-
 initializeApp(firebaseConfig)
 
 const auth = getAuth()
 
+// login function
 document.getElementById("enter-button").onclick = function login() {
     var email = document.getElementById('email').value;
     var password = document.getElementById('password').value;
 
     signInWithEmailAndPassword(auth, email, password)
-    .then(function() {
+    .then((auth) => {
+        localStorage.setItem('auth', JSON.stringify(auth));
         window.location.href = 'dashboard.html';
-    })
-    .catch(function(error) {
+      })
+    .catch(function() {
         alert('Invalid Credentials!');
     });
 }
