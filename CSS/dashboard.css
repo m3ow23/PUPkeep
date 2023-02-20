@@ -1,3 +1,14 @@
+/* Hide scrollbar for all elements */
+* {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* Internet Explorer and Edge */
+  }
+  
+  /* Hide scrollbar for webkit-based browsers */
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
 body{
     font-family: arial;
     margin: 0px;
@@ -13,7 +24,7 @@ header{
 /* HEADER */
 
 .header-container{
-    background-color: #F8A756;
+    background-image: linear-gradient(to right, rgb(213, 146, 37), rgb(213, 146, 37), rgb(171, 36, 36), rgb(213, 146, 37), rgb(213, 146, 37));
     height: 50px;
 }
 
@@ -23,24 +34,6 @@ header{
     vertical-align: top;
 }
 
-.header-left{
-    margin-top: 12px;
-    display: inline-block;
-    padding-left: 30px;
-    padding-right: 10px;
-}
-
-.header-left-content:link, .header-left-content:visited{
-    font-size: 1.35em;
-    color: black;
-    text-decoration: none;
-}
-
-.header-left-content:hover{
-    color: #FFF8F1;
-    font-size: 1.35em;
-}
-
 .header-logo-container{
     text-align: center;
     display: inline-block;
@@ -48,9 +41,9 @@ header{
 }
 
 .header-logo{
-    margin-top: -18px;
-    height: 80px;
-    width: 80px;
+    margin-top: 5px;
+    height: 40px;
+    width: 40px;
 }
 
 .header-right-container{
@@ -59,7 +52,6 @@ header{
     display: inline-block;
     vertical-align: top;
     text-align: right;
-    background-color: #F8A756;
     cursor: pointer;
     display: inline-block;
 }
@@ -72,7 +64,7 @@ header{
     margin: 0px;
     border: 0px;
     padding: 5px;
-    background-color: #F8A756;
+    background: none;
     cursor: pointer;
     font-size: 16px;
     font-size: 1.35em;
@@ -115,84 +107,110 @@ main{
     border-radius: 10px;
 }
 
-.main-order-container{
+.main-table-container{
     width: 1500px;
     margin-left: auto;
     margin-right: auto;
 }
 
-.main-order-column-name-container-case-id{
+.main-table-column-name-container-category{
     display: inline-block;
     margin-left: 50px;
     margin-top: 0px;
     margin-bottom: 0px;
 }
 
-.main-order-column-name-container-case-id p{
+.main-table-column-name-container-category p{
     margin-top: 10px;
     margin-bottom: 10px;
 }
 
-.main-order-column-name-container-submitted-on{
+.main-table-column-name-container-case-id{
+    display: inline-block;
+    margin-left: 80px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.main-table-column-name-container-case-id p{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.main-table-column-name-container-submitted-on{
     display: inline-block;
     margin-left: 45px;
 }
 
-.main-order-column-name-container-submitted-on p{
+.main-table-column-name-container-submitted-on p{
     margin-top: 10px;
     margin-bottom: 10px;
 }
 
-.main-order-column-name-container-submitted-by{
+.main-table-column-name-container-submitted-by{
     display: inline-block;
-    margin-left: 150px;
+    margin-left: 50px;
 }
 
-.main-order-column-name-container-submitted-by p{
+.main-table-column-name-container-submitted-by p{
     margin-top: 10px;
     margin-bottom: 10px;
 }
 
-.main-order-column-name-container-location{
-    display: inline-block;
-    margin-left: 150px;
-}
-
-.main-order-column-name-container-location p{
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-
-.main-order-column-name-container-urgency{
-    display: inline-block;
-    margin-left: 350px;
-}
-
-.main-order-column-name-container-urgency p{
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-
-.main-order-column-name-container-status{
+.main-table-column-name-container-location{
     display: inline-block;
     margin-left: 120px;
 }
 
-.main-order-column-name-container-status p{
+.main-table-column-name-container-location p{
     margin-top: 10px;
     margin-bottom: 10px;
 }
 
+.main-table-column-name-container-urgency{
+    display: inline-block;
+    margin-left: 300px;
+}
+
+.main-table-column-name-container-urgency p{
+    display: inline-block;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.main-table-column-name-container-urgency select{
+    width: 20px;
+    background-color: #FFF8F1;
+    border: 0px;
+}
+
+.main-table-column-name-container-status{
+    display: inline-block;
+    margin-left: 80px;
+}
+
+.main-table-column-name-container-status p{
+    display: inline-block;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.main-table-column-name-container-status select{
+    width: 20px;
+    background-color: #FFF8F1;
+    border: 0px;
+}
+
 /* Tables */
 
-.main-order-empty{
+.main-table-empty{
     color: red;
     text-align: center;
     font-size: 1.35em;
     margin-top: 30px;
 }
 
-.main-order-tables-container{
+.main-table-tables-container{
     color: black;
     text-decoration: none;
     margin-left: 30px;
@@ -200,75 +218,159 @@ main{
     display: block;
 }
 
-.main-order-tables-element-container:hover{
+.main-table-tables-element-container {
+    padding-top: 5px;
+    padding-bottom: 15px;
+}
+
+.main-table-tables-element-container:hover{
     background-color: #F8A756;
     cursor: pointer;
     display: block;
 }
 
-.main-order-column-name-case-id{
+.main-table-column-name-category{
     display: inline-block;
-    margin-left: 30px;
-    width: 120px;
+    margin-left: 20px;
+    width: 150px;
 }
 
-.main-order-column-name-case-id p{
+.main-table-column-name-category p{
+    width: 150px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: -5px;
+}
+
+.main-table-column-name-case-id{
+    display: inline-block;
+    margin-left: 40px;
+}
+
+.main-table-column-name-case-id p{
     margin-top: 10px;
     margin-bottom: 10px;
 }
 
-.main-order-column-name-submitted-on{
+.main-table-column-name-submitted-on{
     display: inline-block;
-    width: 285px;
+    margin-left: 70px;
+    width: 180px;
 }
 
-.main-order-column-name-submitted-on p{
+.main-table-column-name-submitted-on p{
     margin-top: 10px;
     margin-bottom: 10px;
 }
 
-.main-order-column-name-submitted-by{
+.main-table-column-name-submitted-by{
     display: inline-block;
-    width: 280px;
+    width: 250px;
 }
 
-.main-order-column-name-submitted-by p{
-    margin-top: 10px;
-    margin-bottom: 10px;
+.main-table-column-name-submitted-by p{
+    width: 220px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: -5px;
 }
 
-.main-order-column-name-location{
+.main-table-column-name-location{
     display: inline-block;
-    width: 440px;
+    width: 320px;
 }
 
-.main-order-column-name-location p{
-    margin-top: 10px;
-    margin-bottom: 10px;
+.main-table-column-name-location p {
+    display: inline-block;
+    width: 320px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: -5px;
 }
 
-.main-order-column-name-urgency{
+.main-table-column-name-urgency{
     display: inline-block;
     width: 220px;
+    margin-right: 60px;
 }
 
-.main-order-column-name-urgency img{
-    margin-bottom: -3px;
+.main-Standard-container{
+    display: flex;
 }
 
-.main-order-column-name-status{
+.main-Standard-container p{
+    width: 90px;
+    background-color: #128000;
+    padding: 10px;
+    border-radius: 15px;
+    color: white;
+    margin: auto;
+}
+
+.main-Urgent-container{
+    display: flex;
+}
+
+.main-Urgent-container p{
+    width: 65px;
+    background-color: #C8B00C;
+    padding: 10px;
+    border-radius: 15px;
+    color: white;
+    margin: auto;
+}
+
+.main-Emergency-container{
+    display: flex;
+}
+
+.main-Emergency-container p{
+    width: 110px;
+    background-color: #C20000;
+    padding: 10px;
+    border-radius: 15px;
+    color: white;
+    margin: auto;
+}
+
+.main-table-column-name-status{
     display: inline-block;
 }
 
-.main-order-column-name-status img{
+.main-table-column-name-status img{
     margin-bottom: -3px;
 }
 
-.main-order-column-name{
+.main-table-column-name{
     font-size: 1.35em;
 }
 
-.main-order-img{
+.main-table-img{
     height: 20px;
     width: 20px;
+}
+
+/* EMERGENCY NOTIFICATION */
+
+.footer-emergency-container-off {
+    display: none;
+}
+
+.footer-emergency-container {
+    position: fixed;
+    bottom: 0px;
+    background-color: black;
+    height: 70px;
+    width: 1600px;
+    text-align: center;
+}
+
+.footer-emergency-container p{
+    color: red;
+    font-size: 1.35em;
 }

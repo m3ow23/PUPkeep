@@ -1,5 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
 import { getAuth, signInWithEmailAndPassword} from "https://www.gstatic.com/firebasejs/9.17.1/firebase-auth.js"
+import { getDatabase, ref, get, child  } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-database.js"
 
 const firebaseConfig = {
     apiKey: "AIzaSyCqZAvRslBmLDZfmNPptcmfjSVqLoml2kw",
@@ -13,18 +14,25 @@ const firebaseConfig = {
 initializeApp(firebaseConfig)
 
 const auth = getAuth()
+const database = getDatabase()
 
 // login function
-document.getElementById("enter-button").onclick = function login() {
+document.getElementById("enter-button").addEventListener("click", function login() {
     var email = document.getElementById('email').value;
     var password = document.getElementById('password').value;
 
     signInWithEmailAndPassword(auth, email, password)
     .then((auth) => {
-        localStorage.setItem('auth', JSON.stringify(auth));
-        window.location.href = 'dashboard.html';
-      })
+        get(ref(database), 'admins').then((snapshot) => {
+            if (snapshot.val()['admins'][auth['user']['uid']] === '') {
+                localStorage.setItem('auth', JSON.stringify(auth));
+                window.location.href = 'dashboard.html';
+            } else {
+                alert('Invalid Credentials!');
+            }
+        });
+    })
     .catch(function() {
         alert('Invalid Credentials!');
     });
-}
+})
